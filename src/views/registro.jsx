@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 export default function Registro() {
   return (
-    <div>
+    <>
       <h1 className="text-2xl text-center">Criar sua conta</h1>
       <p className="text-sm text-center">Informe  os dados silicitados no formulario para criar sua conta</p>
 
       <div className="bg-white shadow-md rounded-md mt10 px-5 py-10">
-        <form action="">
+        <form action="" autoComplete="OFF">
             <div className="mb-4">
                 <label 
                     htmlFor="name"
@@ -79,10 +81,16 @@ export default function Registro() {
             <input 
                 type="submit" 
                 value="Criar sua conta"
-                className="mt-8 bg-slate-800 hover:bg-slate-600 uppercase w-full p-4 text-slate-400 rounded-lg"
+                className="mt-8 bg-slate-800 cursor-pointer hover:bg-slate-600 uppercase w-full p-4 text-slate-400 rounded-lg"
             />
         </form>
       </div>
-    </div>
+
+      <nav className="mt-5 text-slate-600">
+        <Link to="/auth/login">
+            J&aacute; tem conta? Logar
+        </Link>
+      </nav>
+    </>
   )
 }

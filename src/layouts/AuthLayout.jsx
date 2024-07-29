@@ -6,7 +6,7 @@ export default function AuthLayout() {
       <img 
         src="../img/logo-sf1.png" 
         alt="Logo cafeteria" 
-        className="max-w-xs "
+        className="max-w-xs"
     />
     <div className="w-full p-10 bg-white shadow-lg rounded-lg">
         <Outlet></Outlet>
