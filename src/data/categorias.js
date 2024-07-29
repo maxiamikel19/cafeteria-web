@@ -21,31 +21,21 @@ const categorias = [
     },
     {
         id: 5,
-        nome: "churrasco",
+        nome: "assado",
         icono: "churrasco.png"
     },
     {
         id: 6,
-        nome: "coxinha",
-        icono: "coxinha.png"
-    },
-    {
-        id: 7,
         nome: "hamburger",
         icono: "hamburger.png"
     },
     {
-        id: 8,
+        id: 7,
         nome: "pao",
         icono: "pao.png"
     },
     {
-        id: 9,
-        nome: "pescado",
-        icono: "pescado.png"
-    },
-    {
-        id: 10,
+        id: 8,
         nome: "pizza",
         icono: "pizza.png"
     }
