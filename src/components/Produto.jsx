@@ -1,7 +1,11 @@
+import useProvider from '../hooks/useProvider'
 import { formatardinheiro } from '../helpers'
 
 export default function Produto({produto}) {
-    const {nome, descricao,imagen, preco} = produto
+  
+  const {handleClickModal, handleSetProduto} = useProvider()  
+  const {nome, descricao,imagen, preco} = produto
+  
   return (
     <div className="border p-4 bg-white shadow rounded">
       <img 
@@ -19,8 +23,12 @@ export default function Produto({produto}) {
         <button
             type="button"
             className="w-full bg-indigo-800 hover:bg-slate-400 text-white font-semibold p-3 mt-5 rounded"
+            onClick={() =>{
+              handleClickModal(); 
+              handleSetProduto(produto);
+            }}
         >
-            Aicionar na cesta
+            Selecionar
         </button>
     </div>
   )

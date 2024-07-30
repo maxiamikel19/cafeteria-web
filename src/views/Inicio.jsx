@@ -5,7 +5,11 @@ import {produtos as data} from '../data/produtos'
 export default function Inicio() {
 
   const {categoriaSelecionado} = useProvider();
-  const produtos = data.filter(produto => produto.categoria_id === categoriaSelecionado.id);
+
+  //Filtrar os produtos por sua respetiva categoria
+  const produtos = data.filter(produto => {
+    return produto.categoria_id === categoriaSelecionado.id
+  })
 
   return (
     <>
