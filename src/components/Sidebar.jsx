@@ -1,7 +1,11 @@
-import { categorias } from "../data/categorias";
+//import { categorias } from "../data/categorias";
+import useProvider from "../hooks/useProvider";
 import Categoria from "./Categoria";
 
 export default function Sidebar() {
+
+  const {categorias} = useProvider();
+
   return (
     <aside className="md:w-72">
       <div className="p-4">

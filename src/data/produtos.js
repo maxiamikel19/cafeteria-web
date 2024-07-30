@@ -14,7 +14,7 @@ const produtos = [
     { id: 13, nome: "Torta de Maçã", descricao: "Torta doce de maçã", preco: 5.00,imagen:"bolo.png", categoria_id: 3 },
     { id: 14, nome: "Croissant", descricao: "Croissant amanteigado e crocante", preco: 3.50,imagen:"bolo.png", categoria_id: 3 },
     { id: 15, nome: "Pão de Queijo", descricao: "Pão de queijo quentinho", preco: 2.50,imagen:"bolo.png", categoria_id: 3 },
-    { id: 16, nome: "Sanduíche Natural", descricao: "Sanduíche de frango com salada", preco: 6.00,imagen:"bolo.png", categoria_id: 4 },
+    { id: 16, nome: "Sanduíche Natural", descricao: "Sanduíche de frango com salada", preco: 6.00,imagen:"bolo.png", categoria_id: 6 },
     { id: 17, nome: "Bagel com Cream Cheese", descricao: "Bagel macio com cream cheese", preco: 4.00,imagen:"cha.png", categoria_id: 4 },
     { id: 18, nome: "Toast de Abacate", descricao: "Torrada com abacate e temperos", preco: 7.00,imagen:"cha.png", categoria_id: 4 },
     { id: 19, nome: "Pão Francês", descricao: "Pão francês crocante e fresquinho", preco: 1.00,imagen:"pao.png", categoria_id: 7 },
@@ -31,7 +31,11 @@ const produtos = [
     { id: 30, nome: "Pastel de Carne", descricao: "Pastel frito com recheio de carne", preco: 5.00,imagen:"churrasco.png", categoria_id: 5 },
     { id: 31, nome: "Risoto de Frutos do Mar", descricao: "Risoto cremoso com camarões, lulas e mexilhões", preco: 18.00,imagen:"almoco.png", categoria_id: 2 },
     { id: 32, nome: "Filé Mignon com Fritas", descricao: "Filé mignon grelhado com batatas fritas", preco: 20.00,imagen:"almoco.png", categoria_id: 2 },
-    { id: 33, nome: "Salada Caesar", descricao: "Salada com alface, croutons e molho caesar", preco: 12.00,imagen:"almoco.png", categoria_id: 2 }
+    { id: 33, nome: "Salada Caesar", descricao: "Salada com alface, croutons e molho caesar", preco: 12.00,imagen:"almoco.png", categoria_id: 2 },
+    { id: 1,nome: "Super Mixte Expresso",descricao: "Café expresso com sabor intenso.",preco: 5.00,imagen:"hamburger.png",categoria_id: 6 },
+    { id: 2, nome: "Pão de Queijo", descricao: "Delicioso pão de queijo caseiro.", preco: 3.50,imagen:"hamburger.png", categoria_id: 6},
+    { id: 3,nome: "Recheado de Margherita",descricao: "Pizza clássica com molho de tomate, queijo e manjericão.",preco: 15.00,imagen:"hamburger.png",categoria_id: 6 },
+    { id: 4,nome: "Hamburger de Chocolate",descricao: "Bolo de chocolate com cobertura de ganache.",preco: 8.00,imagen:"hamburger.png",categoria_id: 6}
 ];
 
   export {produtos}
