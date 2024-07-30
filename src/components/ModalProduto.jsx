@@ -52,31 +52,38 @@ export default function ModalProduto({produto}) {
              <p className="font-bold text-2xl text-orange-600  my-4">{formatardinheiro(preco)}</p>
             
               <div className="flex gap-4 mt-5">
-                <button
-                  className="text-2lx"
-                  type="button"
-                  onClick={handleClickDisminuir}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
-                  </svg>
+                <div>
+                  <button
+                    className="text-2lx"
+                    type="button"
+                    onClick={handleClickDisminuir}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
+                    </svg>
 
-                </button>
+                  </button>
 
-                <span 
-                  className="text-xl p-4 "
-                >{cantidade}</span>
+                  <span 
+                    className="text-xl p-4 "
+                  >{cantidade}</span>
 
-                <button
-                  className="text-2xl"
-                  type="button"
-                  onClick={handleClickAdicionar}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
-
-                </button>
+                  <button
+                    className="text-2xl"
+                    type="button"
+                    onClick={handleClickAdicionar}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </button>
+                </div>
+                
+                <div className="w-1/2 text-right font-bold text-2xl">
+                  <span>Total: </span>
+                  <span className="text-orange-600 pl-2">{formatardinheiro(produto.preco*cantidade)}</span>
+                </div>
+                
               </div>
              <button
                 type="button"

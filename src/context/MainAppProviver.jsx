@@ -9,6 +9,7 @@ const MainAppProvider = ({children}) => {
     const [categoriaSelecionado, setCategoriaSelecionado] = useState(categorias[0]);
     const [modal, setModal] = useState(false)
     const [produto, setProduto] = useState({})
+    const [pedido, setPedido] = useState([])
 
     const handleClickCategoria = (id) => {
         //console.log(id)
@@ -34,7 +35,8 @@ const MainAppProvider = ({children}) => {
                 modal,
                 handleClickModal,
                 produto,
-                handleSetProduto
+                handleSetProduto,
+                pedido
             }}
         >{children}</MainAppContext.Provider>
     )    

@@ -14,6 +14,7 @@ const customStyles={
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     width: "50%",
+    background: "#B0C4DE"
   },
 };
 

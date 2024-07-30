@@ -22,7 +22,7 @@ export default function Produto({produto}) {
 
         <button
             type="button"
-            className="w-full bg-indigo-800 hover:bg-slate-400 text-white font-semibold p-3 mt-5 rounded"
+            className="w-full bg-indigo-800 hover:bg-indigo-600 text-white font-semibold p-3 mt-5 rounded"
             onClick={() =>{
               handleClickModal(); 
               handleSetProduto(produto);
