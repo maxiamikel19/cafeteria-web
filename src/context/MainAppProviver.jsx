@@ -1,4 +1,5 @@
 import { createContext, useState } from "react"
+import { toast } from "react-toastify";
 import { categorias as categoriasDB } from "../data/categorias";
 
 const MainAppContext = createContext();
@@ -32,8 +33,10 @@ const MainAppProvider = ({children}) => {
             if(pedido.some( produtoPedido => produtoPedido.id === produto.id)){
                 const novaCantidade = pedido.map(produtoPedido => produtoPedido .id === produto.id ? produto : produtoPedido)
                 setPedido(novaCantidade)
+                toast.success('Cantidade do produto alterada com sucesso.')
             }else{
             setPedido([...pedido, produto]) 
+            toast.success('Produto adicionado ao pedido com sucesso.')
             }
        
         

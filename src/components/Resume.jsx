@@ -22,21 +22,28 @@ export default function Resume() {
           ))
         )}
       </div>
-        <p className="text-xl mt-10 capitalize">
-          total:{''}
-        </p>
 
-        <form className="w-full">
-          <div className="mt-5">
-            <input 
-              type="submit" 
-              value="Confirmar pedido"
-              className="w-full bg-indigo-800 uppercase hover:bg-indigo-600 text-white font-semibold p-3 mt-5 rounded"
-            />
-          </div>
-        </form>
-      
+      {pedido.length > 0 ? (
+        <>
+          <p className="text-xl mt-10 capitalize">
+            total:{''}
+          </p>
 
-    </aside>
+          <form className="w-full">
+            <div className="mt-5">
+              <input 
+                type="submit" 
+                value="Confirmar pedido"
+                className="w-full bg-indigo-800 uppercase hover:bg-indigo-600 text-white font-semibold p-3 mt-5 rounded"
+              />
+            </div>
+          </form>
+        </>
+        
+        
+      ):(
+        <p></p>
+      )}     
+    </aside>  
   )
 }

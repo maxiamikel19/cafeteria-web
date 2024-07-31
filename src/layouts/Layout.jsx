@@ -1,5 +1,7 @@
 import Modal from 'react-modal'
 import { Outlet } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import useProvider from '../hooks/useProvider'
 import Sidebar from '../components/Sidebar'
 import Resume from '../components/Resume'
@@ -40,6 +42,8 @@ export default function Layout() {
         <Modal isOpen={modal} style={customStyles}>
             <ModalProduto produto={produto}/>
         </Modal>
+
+        <ToastContainer />
       
     </>
   )
