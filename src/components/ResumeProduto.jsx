@@ -1,37 +1,41 @@
+import useProvider from "../hooks/useProvider"
 import { formatardinheiro } from "../helpers"
 
 export default function ResumeProduto({produto}) {
     //console.log(produto)
+    const {handleEditarQtdProdutoNoPedido, handleEliminarProdutoNoPedido} = useProvider()
+    const {id, nome, cantidade, preco} = produto
 
   return (
    <div className="pb-4 shadow space-y-1 p-4 bg-white">
       <div className="border-b-2">
         <div className="text-sm flex">
           <p className="w-3/4"><span className="font-semibold">COD</span> ................................</p>
-          <p className="text-end ">0000-{produto.id}</p>
+          <p className="text-end ">0000-{id}</p>
         </div>
         <div className="text-sm">
           <p className="font-semibold">Produto</p>
-          <p>{produto.nome}</p>
+          <p>{nome}</p>
         </div>
         <div className="text-sm flex justify-between">
           <p className="font-semibold">Pre&ccedil;o</p>
-          <p className="text-end ">{formatardinheiro(produto.preco)}</p>
+          <p className="text-end ">{formatardinheiro(preco)}</p>
         </div>
         <div className="text-sm flex justify-between">
           <p className="font-semibold">QDT</p>
-          <p className="text-end ">{produto.cantidade}</p>
+          <p className="text-end ">{cantidade}</p>
         </div>
       </div>
       <div className="text-sm flex justify-between">
           <p className="font-semibold">Sub Total</p>
-          <p className="text-end">{formatardinheiro(produto.preco*produto.cantidade)}</p>
+          <p className="text-end">{formatardinheiro(preco*cantidade)}</p>
       </div>
 
       <div className="flex justify-between gap-2 p-2 bg-slate-200 rounded-md">
         <button
           type="button"
-          className="text-sky-700"
+          className="bg-sky-700 p-2 text-white rounded-md font-bold uppercase shadow-md text-center"
+          onClick={ () => handleEditarQtdProdutoNoPedido(id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +48,8 @@ export default function ResumeProduto({produto}) {
         </button>
         <button
           type="button"
-          className=" text-red-700"
+          className="bg-red-700 p-2 text-white rounded-md font-bold uppercase shadow-md text-center"
+          onClick={() => handleEliminarProdutoNoPedido(id)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

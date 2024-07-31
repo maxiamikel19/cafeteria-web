@@ -4,7 +4,7 @@ import { formatardinheiro } from "../helpers";
 
 export default function ModalProduto() {
     
-    const {handleClickModal,produto, handleAdicionarPedido, pedido, editar} = useProvider();
+    const {handleClickModal,produto, handleAdicionarPedido, pedido } = useProvider();
 
     const {id,nome,descricao,preco,imagen} = produto
     const [cantidade, setCantidade] = useState(1)

@@ -41,6 +41,19 @@ const MainAppProvider = ({children}) => {
        
         
     }
+
+    const handleEditarQtdProdutoNoPedido = (id) => {
+        //console.log(id)
+        const produtoEditado = pedido.filter(produto => produto.id === id)[0]
+        setProduto(produtoEditado)
+        setModal(!modal)
+    }
+
+    const handleEliminarProdutoNoPedido = (id) => {
+        const pedidoAtualizado = pedido.filter( produto => produto.id !== id)
+        setPedido(pedidoAtualizado)
+        toast.success("Eliminado com sucesso!")
+    }
  
     return (
         <MainAppContext.Provider
@@ -53,7 +66,9 @@ const MainAppProvider = ({children}) => {
                 produto,
                 handleSetProduto,
                 pedido,
-                handleAdicionarPedido
+                handleAdicionarPedido,
+                handleEditarQtdProdutoNoPedido,
+                handleEliminarProdutoNoPedido
             }}
         >{children}</MainAppContext.Provider>
     )    
