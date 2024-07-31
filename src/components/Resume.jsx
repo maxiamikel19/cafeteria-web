@@ -1,10 +1,11 @@
 import useProvider from "../hooks/useProvider"
+import ResumeProduto from "./ResumeProduto"
 export default function Resume() {
   
   const {pedido} = useProvider()
 
   return (
-    <div className="w-72 h-screen overflow-y-scroll p-5">
+    <aside className="w-72 h-screen overflow-y-scroll p-5">
       <h1 className="text-xl font-normal text-center uppercase">
         Seu pedido
       </h1>
@@ -13,14 +14,19 @@ export default function Resume() {
         {pedido.length === 0 ? (
           <p className="text-center text-2xl text-red-700">* Não tem pedido *</p>
         ) : (
-          <p>Tem pedido: </p>
+          pedido.map(produto => (
+            <ResumeProduto 
+            key={produto.id}
+              produto={produto}
+            />
+          ))
         )}
-
+      </div>
         <p className="text-xl mt-10 capitalize">
-          total:
+          total:{''}
         </p>
 
-        <form action="" className="w-full">
+        <form className="w-full">
           <div className="mt-5">
             <input 
               type="submit" 
@@ -29,8 +35,8 @@ export default function Resume() {
             />
           </div>
         </form>
-      </div>
+      
 
-    </div>
+    </aside>
   )
 }

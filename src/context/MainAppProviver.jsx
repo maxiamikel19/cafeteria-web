@@ -25,6 +25,11 @@ const MainAppProvider = ({children}) => {
     const handleSetProduto = (produto) => {
         setProduto(produto)
     }
+
+    const handleAdicionarPedido = ({imagen, categoria_id, descricao, ...produto}) => {
+        console.log(produto)
+        setPedido([...pedido, produto])
+    }
  
     return (
         <MainAppContext.Provider
@@ -36,7 +41,8 @@ const MainAppProvider = ({children}) => {
                 handleClickModal,
                 produto,
                 handleSetProduto,
-                pedido
+                pedido,
+                handleAdicionarPedido
             }}
         >{children}</MainAppContext.Provider>
     )    
