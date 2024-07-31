@@ -2,6 +2,7 @@ import { formatardinheiro } from "../helpers"
 
 export default function ResumeProduto({produto}) {
     //console.log(produto)
+
   return (
    <div className="pb-4 shadow space-y-1 p-4 bg-white">
       <div className="border-b-2">

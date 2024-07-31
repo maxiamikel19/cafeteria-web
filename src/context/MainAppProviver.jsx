@@ -27,8 +27,16 @@ const MainAppProvider = ({children}) => {
     }
 
     const handleAdicionarPedido = ({imagen, categoria_id, descricao, ...produto}) => {
-        console.log(produto)
-        setPedido([...pedido, produto])
+        //console.log(produto)
+    
+            if(pedido.some( produtoPedido => produtoPedido.id === produto.id)){
+                const novaCantidade = pedido.map(produtoPedido => produtoPedido .id === produto.id ? produto : produtoPedido)
+                setPedido(novaCantidade)
+            }else{
+            setPedido([...pedido, produto]) 
+            }
+       
+        
     }
  
     return (
