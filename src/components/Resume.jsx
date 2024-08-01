@@ -1,18 +1,19 @@
 import useProvider from "../hooks/useProvider"
 import ResumeProduto from "./ResumeProduto"
+import { formatardinheiro } from "../helpers"
 export default function Resume() {
   
-  const {pedido} = useProvider()
+  const {pedido, total} = useProvider()
 
   return (
     <aside className="w-72 h-screen overflow-y-scroll p-5">
       <h1 className="text-xl font-normal text-center uppercase">
-        Seu pedido
+        pedido
       </h1>
 
       <div className="py-10">
         {pedido.length === 0 ? (
-          <p className="text-center text-2xl text-red-700">* Não tem pedido *</p>
+          <p className="text-center text-2xl text-red-700">* Sua cola de pedido est&aacute; vazia ainda *</p>
         ) : (
           pedido.map(produto => (
             <ResumeProduto 
@@ -26,7 +27,8 @@ export default function Resume() {
       {pedido.length > 0 ? (
         <>
           <p className="text-xl mt-10 capitalize">
-            total:{''}
+            total: {''}
+            {formatardinheiro(total)}
           </p>
 
           <form className="w-full">

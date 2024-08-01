@@ -1,16 +1,17 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 import { toast } from "react-toastify";
-import { categorias as categoriasDB } from "../data/categorias";
+import clienteAxios from "../config/axios";
 
 const MainAppContext = createContext();
 
 const MainAppProvider = ({children}) => {
 
-    const [categorias, setCategorias] = useState(categoriasDB);
-    const [categoriaSelecionado, setCategoriaSelecionado] = useState(categorias[0]);
+    const [categorias, setCategorias] = useState([]);
+    const [categoriaSelecionado, setCategoriaSelecionado] = useState({});
     const [modal, setModal] = useState(false)
     const [produto, setProduto] = useState({})
     const [pedido, setPedido] = useState([])
+    const [total, setTotal] = useState(0)
 
     const handleClickCategoria = (id) => {
         //console.log(id)
@@ -54,6 +55,27 @@ const MainAppProvider = ({children}) => {
         setPedido(pedidoAtualizado)
         toast.success("Eliminado com sucesso!")
     }
+
+    const obterCategorias = async () => {
+        try {
+            //console.log(import.meta.env.VITE_API_URL)
+            const {data} = await clienteAxios('/api/categorias')
+            //console.log(data.data)
+            setCategorias(data.data)
+            setCategoriaSelecionado(data.data[0])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect( () => {
+        obterCategorias();
+    }, [])
+
+    useEffect( () => {
+        const totalPedido = pedido.reduce( (total, produto) => (produto.preco * produto.cantidade) + total, 0)
+        setTotal(totalPedido)
+    }, [pedido])
  
     return (
         <MainAppContext.Provider
@@ -68,7 +90,8 @@ const MainAppProvider = ({children}) => {
                 pedido,
                 handleAdicionarPedido,
                 handleEditarQtdProdutoNoPedido,
-                handleEliminarProdutoNoPedido
+                handleEliminarProdutoNoPedido,
+                total
             }}
         >{children}</MainAppContext.Provider>
     )    
