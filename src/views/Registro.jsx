@@ -1,13 +1,53 @@
+import { createRef, useState } from "react";
+import clienteAxios from "../config/axios";
 import { Link } from "react-router-dom";
+import Alerta from "../components/Alerta";
 
 export default function Registro() {
+    
+    const nameRef = createRef();
+    const emailRef = createRef();
+    const telefoneRef = createRef();
+    const passwordRef = createRef();
+    const passwordConfirmationRef = createRef();
+
+    const [formError, setFormError] = useState([])
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        //alert('Submitted');
+
+        const frmData = {
+            name: nameRef.current.value,
+            telefone: telefoneRef.current.value,
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+            password_confirmation: passwordConfirmationRef.current.value
+        }
+
+        try {
+            const newRegister = await clienteAxios.post('/api/post', frmData)
+            
+        } catch (error) {
+            setFormError(Object.values(error.response.data.errors))
+        }
+       // console.log(frmData)
+    }
+
   return (
     <>
       <h1 className="text-2xl text-center">Criar sua conta</h1>
       <p className="text-sm text-center">Informe  os dados silicitados no formulario para criar sua conta</p>
 
       <div className="bg-white shadow-md rounded-md mt10 px-5 py-10">
-        <form action="" autoComplete="OFF">
+        <form 
+             autoComplete="OFF"
+             method="POST"
+             onSubmit={handleSubmit}
+             noValidate
+        >
+            {formError ? formError.map(err => <Alerta key={err}>{err}</Alerta>) : null}
+
             <div className="mb-4">
                 <label 
                     htmlFor="name"
@@ -19,6 +59,7 @@ export default function Registro() {
                     id="name"
                     name="name"
                     placeholder="Ex: Amikel Maxi"
+                    ref={nameRef}
                 />
             </div>
 
@@ -33,6 +74,7 @@ export default function Registro() {
                     id="telefone"
                     name="telefone"
                     placeholder="Ex: 44 9 99999999"
+                    ref={telefoneRef}
                 />
             </div>
 
@@ -47,6 +89,7 @@ export default function Registro() {
                     id="email"
                     name="email"
                     placeholder="Ex: amikelmaxi@email.com"
+                    ref={emailRef}
                 />
             </div>
 
@@ -61,6 +104,7 @@ export default function Registro() {
                     id="password"
                     name="password"
                     placeholder="Ex: ******"
+                    ref={passwordRef}
                 />
             </div>
 
@@ -75,6 +119,7 @@ export default function Registro() {
                     id="password_confirmation"
                     name="password_confirmation"
                     placeholder="Ex: ******"
+                    ref={passwordConfirmationRef}
                 />
             </div>
 
