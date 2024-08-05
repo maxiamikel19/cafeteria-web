@@ -11,13 +11,12 @@ export default function Registro() {
     const passwordRef = createRef();
     const passwordConfirmationRef = createRef();
 
-    const [formError, setFormError] = useState([])
+    const [erros, setErros] = useState([])
 
-    const handleSubmit = async e => {
+    const handleFormSubmit = async e =>{
         e.preventDefault();
-        //alert('Submitted');
-
-        const frmData = {
+        
+        const dados = {
             name: nameRef.current.value,
             telefone: telefoneRef.current.value,
             email: emailRef.current.value,
@@ -26,28 +25,26 @@ export default function Registro() {
         }
 
         try {
-            const newRegister = await clienteAxios.post('/api/post', frmData)
-            
+            const response = await clienteAxios.post('/api/post', dados)
+            console.log(response.data)
         } catch (error) {
-            setFormError(Object.values(error.response.data.errors))
-        }
-       // console.log(frmData)
+            setErros(Object.values(error.response.data.errors))
+        }   
     }
 
   return (
     <>
       <h1 className="text-2xl text-center">Criar sua conta</h1>
-      <p className="text-sm text-center">Informe  os dados silicitados no formulario para criar sua conta</p>
+      <p className="text-sm text-center">Informe  os dados solicitados no formulario para criar sua conta</p>
 
       <div className="bg-white shadow-md rounded-md mt10 px-5 py-10">
         <form 
              autoComplete="OFF"
              method="POST"
-             onSubmit={handleSubmit}
              noValidate
+             onSubmit={handleFormSubmit}
         >
-            {formError ? formError.map(err => <Alerta key={err}>{err}</Alerta>) : null}
-
+            {erros ? erros.map( (erro, i)=><Alerta key={i}>{erro}</Alerta>) : null}
             <div className="mb-4">
                 <label 
                     htmlFor="name"

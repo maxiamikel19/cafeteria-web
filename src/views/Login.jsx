@@ -1,13 +1,42 @@
-
+import { useState, useRef } from "react"
 import { Link } from "react-router-dom"
+import Alerta from "../components/Alerta";
+import { useAuth } from "../hooks/useAuth";
+
 export default function Login() {
+
+  const emailRef = useRef();
+  const passwordRef = useRef();
+
+  const [erros,setErros] = useState([]);
+  const {login} = useAuth({
+    middleware: 'guest',
+    url: '/'
+  });
+
+  const handleLogin = async e => {
+    e.preventDefault();
+
+    const dados = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value
+    }
+    login(dados, setErros)
+ 
+  }
   return (
     <>
       <h1 className="text-2xl text-center">Login</h1>
       <p className="text-sm text-center">Informe as suas cred&ecirc;ciais</p>
 
       <div className="bg-white shadow-md rounded-md mt10 px-5 py-10">
-        <form action="" autoComplete="OFF">
+        <form  
+          autoComplete="OFF"
+          noValidate
+          onSubmit={handleLogin}
+        >
+          
+          {erros ? erros.map( (erro, i)=><Alerta key={i}>{erro}</Alerta>) : null}
             <div className="mb-4">
                 <label 
                     htmlFor="email"
@@ -19,6 +48,7 @@ export default function Login() {
                     id="email"
                     name="email"
                     placeholder="Ex: amikelmaxi@email.com"
+                    ref={emailRef}
                 />
             </div>
 
@@ -33,6 +63,7 @@ export default function Login() {
                     id="password"
                     name="password"
                     placeholder="Ex: ******"
+                    ref={passwordRef}
                 />
             </div>
 

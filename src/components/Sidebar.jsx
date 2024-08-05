@@ -1,10 +1,12 @@
 //import { categorias } from "../data/categorias";
 import useProvider from "../hooks/useProvider";
 import Categoria from "./Categoria";
+import { useAuth } from "../hooks/useAuth";
 
 export default function Sidebar() {
 
   const {categorias} = useProvider();
+  const {logout} = useAuth('auth');
 
   return (
     <aside className="md:w-72">
@@ -29,6 +31,7 @@ export default function Sidebar() {
         <button
           className="w-full bg-indigo-800 hover:bg-slate-400 text-white font-semibold p-3 truncate"
           type="button"
+          onClick={logout}
         >
           Cancelar pedido
         </button>

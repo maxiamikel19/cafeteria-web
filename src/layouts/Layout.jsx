@@ -6,6 +6,7 @@ import useProvider from '../hooks/useProvider'
 import Sidebar from '../components/Sidebar'
 import Resume from '../components/Resume'
 import ModalProduto from '../components/ModalProduto'
+import { useAuth } from '../hooks/useAuth';
 
 const customStyles={
   content: {
@@ -24,6 +25,8 @@ Modal.setAppElement("#root")
 
 export default function Layout() {
 
+  const {user, error} = useAuth({middleware: 'auth'})
+  
   const {modal, produto} = useProvider()
 
   //console.log(modal)
